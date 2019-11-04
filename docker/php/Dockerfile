@@ -14,7 +14,8 @@ RUN apt-get update \
     && apt-get install -y libpng-dev zlib1g-dev libxml2-dev libicu-dev \
     && docker-php-ext-install intl pdo_mysql zip gd soap xml \
     && docker-php-ext-enable --ini-name 05-opcache.ini opcache \
-    && pecl install xdebug
+    && pecl install xdebug \
+    && docker-php-ext-enable xdebug
 
 COPY ./site.conf /etc/apache2/sites-available/site.conf
 COPY ./php.ini /usr/local/etc/php/php.ini
